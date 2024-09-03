@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'vc/css/style.css' %}">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <center>
+        <div class="form-set">
+            <h1>This is signup page</h1>
+            <form action="" method="post" novalidate>
+                {% csrf_token %}
+                {% for fm in form %}
+                {{ fm.label_tag }} {{fm}}
+                <span class="error">{{fm.errors|striptags}} <br></span>
+                {% endfor %}
+                <input type="submit" value="Register">
+            </form>
+            <p>Already Have an account ? <a href="{% url 'login' %}"><input type="button" value="Signin"></a></p>
+        </div>
+        {% if form.non_field_errors %}
+             {% for error in form.non_field_errors %}
+                 {{ error }}
+              {% endfor %}
+        {% endif %}<br>
+        {% if messages %}
+          {% for message in messages %}
+            {{ message }}
+            {% endfor %}
+        {% endif %}
+
+    </center>
+
+</div>
+
+</body>
+</html>

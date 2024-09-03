@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<center>
+  <div class="room">
+    <h1>Join Room</h1>
+    <form action="{% url 'join' %}" method="POST">
+      {% csrf_token %}
+      <input type="text" placeholder="Enter room ID" name="roomID">
+      <input type="submit" class="button" value="Join">
+
+    </form>
+  </div>
+</center>
+
+</body>
+</html>
